@@ -5,39 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Главы</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
+    :root {
+      color-scheme: light dark;
+      --text: rgba(60, 60, 60, 0.92);
+      --border: rgba(120, 120, 120, 0.22);
+      --hover: rgba(120, 120, 120, 0.08);
+      --panel: rgba(255, 255, 255, 0.02);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: rgba(255, 255, 255, 0.92);
+        --border: rgba(255, 255, 255, 0.14);
+        --hover: rgba(255, 255, 255, 0.06);
+        --panel: rgba(255, 255, 255, 0.02);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
-      padding: 16px;
-      font-family: Georgia, "Times New Roman", serif;
+      padding: 0;
       background: transparent;
-      color: #2b2b2b;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+    }
+
+    body {
+      padding: 4px 0;
     }
 
     .menu {
-      max-width: 720px;
-      margin: 0 auto;
+      width: 100%;
     }
 
     .toggle {
       width: 100%;
-      border: 1px solid #d8d1c7;
-      background: #f8f4ee;
-      color: #3a3128;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-radius: 12px;
-      cursor: pointer;
-      font-size: 16px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.3;
       text-align: left;
+      cursor: pointer;
+    }
+
+    .toggle:hover {
+      background: var(--hover);
     }
 
     .list {
-      margin-top: 10px;
-      border: 1px solid #e5ddd2;
-      border-radius: 12px;
-      background: #fffdfa;
-      overflow: hidden;
       display: none;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--panel);
     }
 
     .list.open {
@@ -46,10 +74,12 @@
 
     .list a {
       display: block;
-      padding: 12px 16px;
+      padding: 11px 14px;
       text-decoration: none;
-      color: #3b3027;
-      border-top: 1px solid #efe7dc;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.35;
+      border-top: 1px solid var(--border);
     }
 
     .list a:first-child {
@@ -57,29 +87,21 @@
     }
 
     .list a:hover {
-      background: #f6efe6;
-    }
-
-    .hint {
-      margin-top: 8px;
-      font-size: 13px;
-      opacity: 0.75;
+      background: var(--hover);
     }
   </style>
 </head>
 <body>
   <div class="menu">
-    <button class="toggle" id="toggleBtn">Открыть список глав</button>
+    <button class="toggle" id="toggleBtn">Главы</button>
 
     <div class="list" id="chapterList">
-      <p><a href="https://storyhearth.ru/LWMfwq-ysla" target="_top">Глава 1 — «Рынок Линнхольма»</a></p>
-      <p><a href="https://storyhearth.ru/kg-3CPT3m3H" target="_top">Глава 2 — «Книга без имени»</a></p>
-      <p><a href="https://storyhearth.ru/Zc2ohYf98IC" target="_top">Глава 3 — «Первый узел»</a></p>
-      <p><a href="https://storyhearth.ru/Y-FULih6x0V" target="_top">Глава 4 — «Якорь»</a></p>
-      <p><a href="https://storyhearth.ru/BuH9wHTgsYG" target="_top">Глава 5 — «Ремешок»</a></p>
+      <a href="https://storyhearth.ru/LWMfwq-ysla" target="_top">Глава 1 — «Рынок Линнхольма»</a>
+      <a href="https://storyhearth.ru/kg-3CPT3m3H" target="_top">Глава 2 — «Книга без имени»</a>
+      <a href="https://storyhearth.ru/Zc2ohYf98IC" target="_top">Глава 3 — «Первый узел»</a>
+      <a href="https://storyhearth.ru/Y-FULih6x0V" target="_top">Глава 4 — «Якорь»</a>
+      <a href="https://storyhearth.ru/BuH9wHTgsYG" target="_top">Глава 5 — «Ремешок»</a>
     </div>
-
-    <div class="hint">Навигация по роману</div>
   </div>
 
   <script>
@@ -88,9 +110,7 @@
 
     btn.addEventListener('click', () => {
       list.classList.toggle('open');
-      btn.textContent = list.classList.contains('open')
-        ? 'Скрыть список глав'
-        : 'Открыть список глав';
+      btn.textContent = list.classList.contains('open') ? 'Скрыть главы' : 'Главы';
     });
   </script>
 </body>
