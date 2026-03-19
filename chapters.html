@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Главы</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      background: transparent;
+      color: #2b2b2b;
+    }
+
+    .menu {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .toggle {
+      width: 100%;
+      border: 1px solid #d8d1c7;
+      background: #f8f4ee;
+      color: #3a3128;
+      padding: 14px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .list {
+      margin-top: 10px;
+      border: 1px solid #e5ddd2;
+      border-radius: 12px;
+      background: #fffdfa;
+      overflow: hidden;
+      display: none;
+    }
+
+    .list.open {
+      display: block;
+    }
+
+    .list a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #3b3027;
+      border-top: 1px solid #efe7dc;
+    }
+
+    .list a:first-child {
+      border-top: 0;
+    }
+
+    .list a:hover {
+      background: #f6efe6;
+    }
+
+    .hint {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <button class="toggle" id="toggleBtn">Открыть список глав</button>
+
+    <div class="list" id="chapterList">
+      <p><a href="https://storyhearth.ru/LWMfwq-ysla" target="_top">Глава 1 — «Рынок Линнхольма»</a></p>
+      <p><a href="https://storyhearth.ru/kg-3CPT3m3H" target="_top">Глава 2 — «Книга без имени»</a></p>
+      <p><a href="https://storyhearth.ru/Zc2ohYf98IC" target="_top">Глава 3 — «Первый узел»/a></p>
+      <p><a href="https://storyhearth.ru/Y-FULih6x0V" target="_top">Глава 4 — «Якорь»/a></p>
+      <p><a href="https://storyhearth.ru/BuH9wHTgsYG" target="_top">Глава 5 — «Ремешок»/a></p>
+    </div>
+
+    <div class="hint">Навигация по роману</div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('toggleBtn');
+    const list = document.getElementById('chapterList');
+
+    btn.addEventListener('click', () => {
+      list.classList.toggle('open');
+      btn.textContent = list.classList.contains('open')
+        ? 'Скрыть список глав'
+        : 'Открыть список глав';
+    });
+  </script>
+</body>
+</html>
